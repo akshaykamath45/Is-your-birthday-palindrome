@@ -5,7 +5,7 @@ function reverseStr(str) {
     return reversedStr;
     // return str.split('').reverse().join();
   }
-  console.log(reverseStr("mom"));
+  
 
   function isPalindrome(str){
         var reverse=reverseStr(str);
@@ -47,9 +47,22 @@ function reverseStr(str) {
     //returning in array
     return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
   }
+
+  function checkPalindromeForAllDAteFormats(date) {
+    var listOfPalindromes = getAllDateFormats(date);
+    var flag = false;
+    for (var i = 0; i < listOfPalindromes.length; i++) {
+      if (isPalindrome(listOfPalindromes[i])) {
+        flag = true;
+        break;
+      }
+    }
+    return flag;
+  }
   var date = {
-    day: 5,
-    month: 9,
+    day: 2,
+    month: 11,
     year: 2020
   };
-  console.log(getAllDateFormats(date))
+  // console.log(getAllDateFormats(date))
+  console.log(checkPalindromeForAllDAteFormats(date));
