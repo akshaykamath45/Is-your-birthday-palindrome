@@ -59,6 +59,21 @@ function reverseStr(str) {
     }
     return flag;
   }
+
+  function isLeapYear(year) {
+    if (year % 400 == 0) {
+      return true;
+    }
+    if (year % 100 == 0) {
+      return false;
+    }
+    if (year % 4 === 0) {
+      return true;
+    }
+    return false;
+  }
+  
+
   function getNextDate(date) {
     var day = date.day + 1;//incrementing the day
     var month = date.month;
@@ -95,11 +110,27 @@ function reverseStr(str) {
     };
   }
   
+
+  function getNextPalindromeDate(date) {
+    var ctr = 0;
+    var nextDate = getNextDate(date);
+    while (1) {
+      ctr++;
+      var isPalindrome = checkPalindromeForAllDAteFormats(nextDate);
+      if (isPalindrome) {
+        break;
+      }
+      nextDate = getNextDate(nextDate);
+    }
+    return [ctr, nextDate];
+  }
+
   var date = {
     day: 2,
     month: 11,
     year: 2020
-  };
+  }
+  console.log(getNextPalindromeDate(date));
   // console.log(getAllDateFormats(date))
-  console.log(checkPalindromeForAllDAteFormats(date));
-  console.log(getNextDate(date));
+//   console.log(checkPalindromeForAllDAteFormats(date));
+//   console.log(getNextDate(date));
