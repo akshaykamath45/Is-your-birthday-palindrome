@@ -17,9 +17,27 @@ function reverseStr(str) {
         // }
         return str === reverse;
   }
-
-  console.log(isPalindrome("242"));
-  console.log(isPalindrome('oppo'));
-  console.log(isPalindrome('racecar'));
-  console.log(isPalindrome('mom'));
-  console.log(isPalindrome('momo'));
+  function convertDateToStr(date) {
+    var dateStr = { day: '', month: '', year: '' };
+    if (date.day < 10) {
+      dateStr.day = '0' + date.day;
+    }
+    else {
+      dateStr.day = date.day.toString();
+    }
+    if (date.month < 10) {
+      dateStr.month = '0' + date.month;
+    }
+    else {
+      dateStr.month = date.month.toString();
+    }
+  
+    dateStr.year = date.year.toString();
+    return dateStr;
+  }
+  var date = {
+    day: 5,
+    month: 9,
+    year: 2020
+  }
+  console.log(convertDateToStr(date));
