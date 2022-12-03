@@ -35,9 +35,21 @@ function reverseStr(str) {
     dateStr.year = date.year.toString();
     return dateStr;
   }
+
+  function getAllDateFormats(date) {
+    var dateStr = convertDateToStr(date);
+    var ddmmyyyy = dateStr.day + dateStr.month + dateStr.year;
+    var mmddyyyy = dateStr.month + dateStr.day + dateStr.year;
+    var yyyymmdd = dateStr.year + dateStr.month + dateStr.day;
+    var ddmmyy = dateStr.day + dateStr.month + dateStr.year.slice(-2);//to get last 2 digits
+    var mmddyy = dateStr.month + dateStr.day + dateStr.year.slice(-2);
+    var yymmdd = dateStr.year.slice(-2) + dateStr.month + dateStr.day;
+    //returning in array
+    return [ddmmyyyy, mmddyyyy, yyyymmdd, ddmmyy, mmddyy, yymmdd];
+  }
   var date = {
     day: 5,
     month: 9,
     year: 2020
-  }
-  console.log(convertDateToStr(date));
+  };
+  console.log(getAllDateFormats(date))
