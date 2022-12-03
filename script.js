@@ -79,7 +79,7 @@ function reverseStr(str) {
       }
     }
     else {
-      if (day > daysInMonth[month - 1]) { //-1,since indexing starting from 0,so adjusting.
+      if (day > daysInMonth[month - 1]) { //-1,since indexing starting from 0,so adjusting.Check if the day exceeds the max days in the month.
         day = 1;
         month++;
       }//month changes,hence increasing.
