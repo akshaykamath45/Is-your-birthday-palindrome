@@ -167,11 +167,11 @@ function reverseStr(str) {
     var previousDate = getPreviousDate(date);
     while (1) {
       ctr++;
-      var isPalindrome = checkPalindromeForAllDAteFormats(nextDate);
+      var isPalindrome = checkPalindromeForAllDAteFormats(previousDate);
       if (isPalindrome) {
         break;
       }
-      previousDate = getPreviousDateDate(previousDate);
+      previousDate = getPreviousDate(previousDate);
     }
     return [ctr, previousDate];
   }
@@ -187,4 +187,33 @@ function reverseStr(str) {
 //   console.log(checkPalindromeForAllDAteFormats(date));
 //   console.log(getNextDate(date));
 // console.log(getNextPalindromeDate(date));
-console.log(getPreviousDate(date));
+// console.log(getPreviousDate(date));
+var dateInput = document.querySelector('#birthday-input');
+var showBtn = document.querySelector('#show-btn');
+var result = document.querySelector('#result');
+var result2 = document.querySelector('#result2');
+
+function clickHandler() {
+  var bdayStr = dateInput.value;
+  if (bdayStr != '') {
+    var listOfDate = bdayStr.split('-');
+    var date = {//to convert into day,month,year format
+      day: Number(listOfDate[2]),
+      month: Number(listOfDate[1]),
+      year: Number(listOfDate[0]),
+    }
+  }
+  var isPalindrome = checkPalindromeForAllDAteFormats(date);
+  if (isPalindrome) {
+    result.innerText = 'Yay!,Your Birthday is Palindrome!!'
+  }
+  else {
+    var [ctr, nextDate] = getNextPalindromeDate(date);
+    result.innerText = `The next palindrome date is ${nextDate.day}-${nextDate.month}-${nextDate.year},you missed it by ${ctr} days`;
+    // var [ctr, previousDate] = getPreviousPalindromeDate(date);
+    // result2.innerText = `The previous palindrome date is ${previousDate.day}-${previousDate.month}-${previousDate.year},you missed it by ${ctr} days`;
+  }
+
+}
+showBtn.addEventListener('click', clickHandler)
+// 
