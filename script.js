@@ -125,12 +125,66 @@ function reverseStr(str) {
     return [ctr, nextDate];
   }
 
+
+  function getPreviousDate(date) {
+    var day = date.day - 1;//decrementing the day
+    var month = date.month;
+    var year = date.year;
+    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    if (month == 3) {//check for leap year,feb month
+      if (isLeapYear(year)) {
+        if (day < 1) {
+          day = 29;
+          month--;
+        }
+      }
+      else {
+        if (day < 1) {//normal condition
+          day = daysInMonth[month] - 1;
+          month--;
+        }
+      }
+    }
+    else {
+      if (day < 1) { //-1,since indexing starting from 0,so adjusting.Check if the day exceeds the max days in the month.
+        day = daysInMonth[month] - 1;
+        month--;
+      }//month changes,hence increasing.
+    }
+    if (month < 1) {
+      month = 12;
+      year--;
+    }
+    return {
+      day: day,
+      month: month,
+      year: year
+    };
+  }
+  
+  function getPreviousPalindromeDate(date) {
+    var ctr = 0;
+    var previousDate = getPreviousDate(date);
+    while (1) {
+      ctr++;
+      var isPalindrome = checkPalindromeForAllDAteFormats(nextDate);
+      if (isPalindrome) {
+        break;
+      }
+      previousDate = getPreviousDateDate(previousDate);
+    }
+    return [ctr, previousDate];
+  }
+  
+
   var date = {
-    day: 2,
+    day: 1,
     month: 11,
     year: 2020
   }
-  console.log(getNextPalindromeDate(date));
+ 
   // console.log(getAllDateFormats(date))
 //   console.log(checkPalindromeForAllDAteFormats(date));
 //   console.log(getNextDate(date));
+// console.log(getNextPalindromeDate(date));
+console.log(getPreviousDate(date));
