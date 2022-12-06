@@ -31,3 +31,13 @@ input{
     height: 3rem;
     
 }
+@media(max-width:768px){
+    html{
+        font-size:45%;
+    }
+}
+@media(max-width:998px){
+    html{
+        font-size: 55%;
+    }
+}
